@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // ⭐️ Example Challenge START ⭐️
 
 // /**Example Task : processFirstItem()
@@ -29,31 +30,41 @@
   
   1. What is the difference between counter1 and counter2?
   
+  //Well, first and foremost counter1 logs the function counter(). Like, the code for counter() not anything else. Counter2
+  //logs 0. unless you copy and paste it over and over, then it will increase in increments.
+  //im probably running counter1 wrong though.
+
   2. Which of the two uses a closure? How can you tell?
   
   // counter2 uses a closure because the variable count is globally scoped and it reaches out to grab count.
 
   3. In what scenario would the counter1 code be preferable? In what scenario would 
      counter2 be better?
+     
+     //at a basic level, counter2 is better for when you need to increase a variable that has global scope, either for all code, or just for a simple part
+     //im not explaining this very well but counter2 has closure and it reaches to the global scope for its variable. 
+     //counter1 makes changes within its own scope and is probably a lot more preferable in situations where
+     //counter is an already taken variable out in the global scope and needs to be changed within the function of counterMaker
+     //and counterMaker alone. 
 
 */
 
 // counter1 code
-function counterMaker() {
+ function counterMaker() {
+   let count = 0;
+   return function counter() {
+    return count++;
+   }
+ }
+ const counter1 = counterMaker();
+ console.log(counter1);
+
+  //counter2 code
   let count = 0;
-  return function counter() {
-   return count++;
+
+  function counter2() {
+    return count++;
   }
-}
-const counter1 = counterMaker();
-console.log(counter1);
-
-// counter2 code
-// let count = 0;
-
-// function counter2() {
-//   return count++;
-// }
 
 
 /* ⚾️⚾️⚾️ Task 2: inning() ⚾️⚾️⚾️
@@ -65,9 +76,10 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-//function inning(/*Code Here*/){
-    /*Code Here*/
-//}
+// eslint-disable-next-line no-unused-vars
+function inning(){
+  return Math.floor(Math.random() * 3);
+}
 
 
 /* ⚾️⚾️⚾️ Task 3: finalScore() ⚾️⚾️⚾️
@@ -84,18 +96,45 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-//function finalScore(/*code Here*/){
-  /*Code Here*/
-//}
+// function finalScore(inningcb, numberPlayed){
+//   for(let i = 0; i < 9; i++){
+// return {
+//   home: inning(),
+//   away: inning()
+// }
+// }
+// return {
+//   home: 
+// }
+
+//   }
+/////////Let me try a lil something else\\\\\\\\\\
+function finalScore(inning, numberPlayed){
+  let homescore = 0
+  let awayscore = 0
+  for(let i = 0; i < numberPlayed /*will be 9 in this case but it allows to increment this many times perhaps*/; i++){
+     homescore = homescore + inning(),
+     awayscore = awayscore + inning() //maybe this will change homescore every time it increases but, separately
+  }
+  return {
+    home: homescore,
+    away: awayscore
+  };
+}
+console.log(inning, 9);
 
 // /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 // Use the getInningScore() function below to do the following:
 //   1. Receive a callback function - you will pass in the inning function from task 2 as your argument 
 //   2. Return an object with a score for home and a score for away that populates from invoking the inning callback function */
 
-//function getInningScore(/*Your Code Here */) {
-  /*Your Code Here */
-//}
+function getInningScore(inning) {
+  return {
+    home: inning(),
+    away: inning()
+  }
+}
+console.log(getInningScore(inning));
 
 
 // /* ⚾️⚾️⚾️ Task 5: scoreboard() ⚾️⚾️⚾️
