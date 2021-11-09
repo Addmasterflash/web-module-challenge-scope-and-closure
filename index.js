@@ -135,6 +135,8 @@ function getInningScore(inning) {
   }
 }
 console.log(getInningScore(inning));
+//this one was surprisingly simple, like, i expected this to be task 1, but i bet you did that to make people over think and throw em off you sneaky devils you
+
 
 
 // /* ⚾️⚾️⚾️ Task 5: scoreboard() ⚾️⚾️⚾️
@@ -178,9 +180,18 @@ console.log(getInningScore(inning));
 // ]  
 //   */
 
-//function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
-//}
+function scoreboard(getInningScore, inning, numberPlayed) {
+  const eachInningScore = [];
+  let homescore = 0;
+  let awayscore = 0; //i would just do this whole loop again right, like earlier but within an array? also like how we did in guided practice, no?
+
+  for(let i =0; i<numberPlayed; i++){
+    homescore = homescore + getInningScore(inning());
+    awayscore = awayscore + getInningScore(inning());
+    eachInningScore.push(`Inning `)
+  }
+}
+
 
 
 
