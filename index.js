@@ -188,27 +188,36 @@ function scoreboard(getInningScore, inning, numberPlayed) {
   for(let i =0; i<numberPlayed; i++){
     homescore = homescore + getInningScore(inning());
     awayscore = awayscore + getInningScore(inning());
-    eachInningScore.push(`Inning `)
+    eachInningScore.push(`Inning ${i + 1}: Away ${awayscore}, Home ${homescore}`)
   }
+  //now for the statements i have to add, maybe, conditionals.
+  if(homescore === awayscore){
+    eachInningScore.push(`This game will require extra innings! Home ${homescore}, Away ${awayscore}`);
+  }else{
+    eachInningScore.push(`Final Score: Home ${homescore}, Away ${awayscore}`)
+  }
+  return eachInningScore;
 }
+
+console.log(scoreboard(getInningScore, inning, 9));
 
 
 
 
 
 /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
-// function foo(){
-//   console.log('its working');
-//   return 'bar';
-// }
-// foo();
-// module.exports = {
-//   foo,
-//   processFirstItem,
-//   counter1,
-//   counter2,
-//   inning,
-//   finalScore,
-//   getInningScore,
-//   scoreboard,
-// }
+ function foo(){
+   console.log('its working');
+   return 'bar';
+ }
+ foo();
+ module.exports = {
+   foo,
+   processFirstItem,
+   counter1,
+   counter2,
+   inning,
+   finalScore,
+   getInningScore,
+   scoreboard,
+ }
